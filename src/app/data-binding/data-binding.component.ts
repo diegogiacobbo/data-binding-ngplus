@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
+  url: string = 'interpolacao titre';
+
+  getValor(){ return 1}
+
+  getLoremImg400200(){ return "http://lorempixel.com/400/200/sports/1"}
+
   constructor() { }
 
   ngOnInit() {
