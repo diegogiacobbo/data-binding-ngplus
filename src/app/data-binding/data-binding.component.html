@@ -1,12 +1,91 @@
 <article>
-  
-<p>
-  data-binding works! {{url}}
-  {{getValor()}}
-</p>
+
+  <h1>
+    <a href="https://www.youtube.com/watch?v=rlVxG2lG1Tk">1) Interpolacao simples </a>
+  </h1>
+  <h3>Colocando imagens simples na tela.. e textos com o component, no arquivo -> data-binding.components.ts
+  </h3>
+  <br><br>
+
+  <p>
+    data-binding works! {{url}}
+    {{getValor()}}
+  </p>
 
 </article>
 
 <article>
   <img src={{getLoremImg400200()}} />
 </article>
+<br><br>
+<article>
+  <a href="https://www.youtube.com/watch?v=NxtlQSpSgx8">
+    <h1>2) Property Bind
+    </h1>
+  </a>
+  <br><br>
+  <h3>
+    Class e Style Binding property
+  </h3>
+  <div>Selecione uma classe:
+    <select #idClasse (change)="0">
+      <option value="alert-success">Sucesso
+      </option>
+      <option value="alert-info">Info
+      </option>
+      <option value="alert-warning">Alerta
+      </option>
+      <option value="alert-danger">Erro
+      </option>
+    </select>
+    <br><br>
+    <div class="alert {{idClasse.value}}" role="alert">
+      apenas mudar cor com interpolacao normal!
+    </div>
+    <br>-------------------------------------------------------------------------<br>
+    <div class="alert" role="alert" [class.alert-success]="idClasse.value == 'alert-success'">
+      This is a success alert—check it out!
+    </div>
+    <div class="alert" role="alert" [class.alert-info]="idClasse.value == 'alert-info'">
+      This is a danger alert—check it out!
+    </div>
+    <div class="alert" role="alert" [class.alert-warning]="idClasse.value == 'alert-warning'">
+      This is a warning alert—check it out!
+    </div>
+    <div class="alert" role="alert" [class.alert-danger]="idClasse.value == 'alert-danger'">
+      This is a info alert—check it out!
+    </div>
+
+    <div class="alert alert-primary" role="alert" [style.display]="idClasse.value == 'alert-danger' ? 'block' : 'none'">
+      Display none e block com property style display, que eh mais uma property bind
+    </div>
+
+    <div>obs.: vai aparecer um codigo acima quando selecionar danger...</div>
+
+    <br>-------------------------------------------------------------------------<br>
+    <div>
+      Explicacao do porque vais aparecer um codigo acima quando selecionar danger: <br>
+      operacao ternaria, esses dois codigos abaixo sao iguais, para efetuar a property bind, somos obrigados a usar...
+      <br>
+      <br>
+      1)
+      <br>
+      <code>
+        &nbsp;var text = '' <br><br>
+        &nbsp;if (idClasse.value == 'alert-danger') {{'{'}} <br>
+        &nbsp;&nbsp;&nbsp;  text = 'block' <br>
+        &nbsp;{{'}'}} else {{'{'}} <br>
+        &nbsp;&nbsp;&nbsp;  text = 'none' <br>
+        &nbsp;{{'}'}} <br>
+      </code>
+      <br>
+      <br>
+      2)
+      <br>
+      <code>&nbsp; var text = (idClasse.value == 'alert-danger') ? 'block' : 'none'
+      </code>
+
+    </div>
+  </div>
+</article>
+<br><br>
